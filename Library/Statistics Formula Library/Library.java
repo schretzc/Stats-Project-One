@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.Arrays;
 public class Library
 {
@@ -114,23 +115,66 @@ public class Library
           return standardDeviation;
       }
 
-      public long factorial(int userInput){
-        long factorial = 1;
-        for (int i = 1 ; i <= userInput; i++ ){
+      public long factorialLong(int userInput){
+        long factorial = userInput;
+        for (int i = 1 ; i < userInput; i++ ){
             factorial *= i;
         }
         return factorial;
       }
 
-      public long findPermutations(int n, int r){
-       long permutation = (factorial(n))/(factorial(n - r));
-       return permutation;
+      public BigInteger factorialBigInt(int userInput){
+        BigInteger factorial = BigInteger.valueOf(userInput);
+        for (int i = 1; i < userInput; i++){
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+
+        return factorial;
       }
 
-      public long findCombinations(int n, int r){
-        long combination = (factorial(n))/(factorial(r) * factorial(n - r));
+      public BigInteger findPermutations(int n, int r){
+        BigInteger permutation = factorialBigInt(n).divide(factorialBigInt(n - r));
+        return permutation;
+      }
+
+      public BigInteger findCombinations(int n, int r){
+        BigInteger combination = factorialBigInt(n).divide((factorialBigInt(n - r).multiply(factorialBigInt(r))));
         return combination;
       }
+
+      public boolean isIndependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
+        if(pAGivenB == pA){
+            return true;
+        }
+        else if(pBGivenA == pB){
+            return true;
+        }
+        else if(pAAndB == pA * pB){
+            return true;
+        }
+        else{
+            return false;
+        }
+      }
+
+        public boolean isDependent(double pA, double pB, double pAGivenB, double pBGivenA, double pAAndB){
+            if(pAGivenB != pA){
+                return true;
+            }
+            else if(pBGivenA != pB){
+                return true;
+            }
+            else if(pAAndB != pA * pB){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+
+
 
     public void runTest(){
         
@@ -158,7 +202,8 @@ public class Library
         double standardDeviationSamp = findStandardDeviationSample(sampleNumbersEven);
         System.out.println("The Standard Deviation of the Sample is " + standardDeviationSamp);
 
-        System.out.println("the factorial is: " + factorial(9));
+        System.out.println("the Long factorial is: " + factorialLong(9));
+        System.out.println("the BigInt factorial is: " + factorialBigInt(9));
 
         System.out.println("The number of permutations is " + findPermutations(10,3));
         
