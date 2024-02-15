@@ -5,6 +5,11 @@ public class TestPokemonCardGame {
         game.runGame();
         game.runGame1();
 
+        MonteCarloSimulation m = new MonteCarloSimulation();
+        m.runMonte();
+
+
+
 
 
 
