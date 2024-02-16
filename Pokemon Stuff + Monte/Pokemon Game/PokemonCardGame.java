@@ -37,11 +37,15 @@ public class PokemonCardGame {
         for (int i = 0; i < player.getActivePile().size(); i++){
             System.out.println(player.getActivePile().get(i).getName());
         }
+        System.out.println(player.getName() + "'s Bench");
+        player.printBench();
         System.out.println();
         System.out.println(target.getName() + "'s Field");
         for (int i = 0; i < target.getActivePile().size(); i++){
             System.out.println(i+1 + target.getActivePile().get(i).getName());
         }
+        System.out.println(target.getName() + "'s Bench");
+        target.printBench();
         System.out.println();
         System.out.println(player.getName() + "'s Prize Pile Size: " + player.getPrizePile().size());
         System.out.println(target.getName() + "'s Prize Pile Size: " + target.getPrizePile().size());
