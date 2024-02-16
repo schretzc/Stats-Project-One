@@ -163,17 +163,20 @@ public class Player {
         if (hand.get(cardNumber) instanceof Pokemon){
             addToBench(cardNumber);
             System.out.println("Added to bench");
+            System.out.println();
         }
         //if its an energy card, call attatchenergy
         else if (hand.get(cardNumber) instanceof Energy){
             attachEnergy(cardNumber);
             System.out.println("Added to active");
+            System.out.println(name);
         }
         //if its a trainer, call playtrainer
         else if (hand.get(cardNumber) instanceof Trainer){
             //play trainer card
             playTrainer(cardNumber, player);
             System.out.println("Played trainer card");
+            System.out.println();
         }
     }
     public void attachEnergy(int cardNumber) {
@@ -246,7 +249,7 @@ public class Player {
             //allows current player to grab a new cardv from prize pile if knockout
             System.out.println("Choose a new card from your prize pile:");
             currentPlayer.printBench();
-            int prizePokemon = scan.nextInt() + 1;
+            int prizePokemon = scan.nextInt() - 1;
             currentPlayer.hand.add(currentPlayer.benchPile.get(prizePokemon));
             currentPlayer.benchPile.remove(prizePokemon);
         }
@@ -284,7 +287,7 @@ public class Player {
     public void cardSelection(Player player){
          // Prompt the player to choose a card to play
          System.out.println("Pick a card to play: ");
-         int cardNum = scan.nextInt() + 1;
+         int cardNum = scan.nextInt() - 1;
          playCard(cardNum, player);
 
     }
@@ -315,6 +318,7 @@ public class Player {
             System.out.println("1: Play a card");
             System.out.println("2: Attack");
             System.out.println("3: End turn");
+            System.out.println();
         
             int actionChoice = scan.nextInt();
             scan.nextLine();
@@ -325,6 +329,7 @@ public class Player {
                 attackPhase(player, targetPlayer);
             } else if (actionChoice == 3) {
                 System.out.println("Turn ended.");
+                System.out.println();
                 continueTurn = false;
             } else {
                 System.out.println("Invalid action number! Choose 1, 2, or 3.");
