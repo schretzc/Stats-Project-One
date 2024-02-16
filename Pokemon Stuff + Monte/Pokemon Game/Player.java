@@ -98,6 +98,20 @@ public class Player {
         }
     }
 
+    public void printBench(){
+        for(int i = 0; i < benchPile.size(); i++){
+            System.out.println(i+1 + ": " + benchPile.get(i).getName() + " ");
+        }
+    }
+
+    public void printField(){
+        System.out.println("Hand: ");
+        printHand();
+        System.out.println("Bench: ");
+        printBench();
+        System.out.println("Active: ");
+        System.out.println(activePile.get(0).getName());}
+
     //adds card to bench pile if bench pile is not full
     public void addToBench(int cardNumber){
         if (benchPile.size() < 5){
@@ -231,8 +245,8 @@ public class Player {
             
             //allows current player to grab a new cardv from prize pile if knockout
             System.out.println("Choose a new card from your prize pile:");
-            currentPlayer.getBenchPile();
-            int prizePokemon = scan.nextInt();
+            currentPlayer.printBench();
+            int prizePokemon = scan.nextInt() + 1;
             currentPlayer.hand.add(currentPlayer.benchPile.get(prizePokemon));
             currentPlayer.benchPile.remove(prizePokemon);
         }
@@ -270,7 +284,7 @@ public class Player {
     public void cardSelection(Player player){
          // Prompt the player to choose a card to play
          System.out.println("Pick a card to play: ");
-         int cardNum = scan.nextInt();
+         int cardNum = scan.nextInt() + 1;
          playCard(cardNum, player);
 
     }

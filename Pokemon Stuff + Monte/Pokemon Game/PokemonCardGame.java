@@ -32,18 +32,23 @@ public class PokemonCardGame {
         System.out.println();
     }
 
-    public void printField(Player player){
-        System.out.println(player.getName() + "'s Current Field ");
+    public void printField(Player player, Player target){
+        System.out.println(player.getName() + "'s Field ");
         for (int i = 0; i < player.getActivePile().size(); i++){
             System.out.println(player.getActivePile().get(i).getName());
         }
-        System.out.println();
+        System.out.println(target.getName() + "'s Field");
+        for (int i = 0; i < target.getActivePile().size(); i++){
+            System.out.println(i+1 + target.getActivePile().get(i).getName());
+        }
+        System.out.println(player.getName() + "'s Prize Pile Size: " + player.getPrizePile().size());
+        System.out.println(target.getName() + "'s Prize Pile Size: " + target.getPrizePile().size());
     
     }
     public void printPrizePile(Player player){
-        System.out.println(player.getName() + "'s Prize Pile: ");
-        for (int i = 0; i < player.getPrizePile().size(); i++){
-            System.out.println(player.getPrizePile().get(i).getName());
+        System.out.println(player.getName() + "'s Field: ");
+        for (int i = 0; i < player.getActivePile().size(); i++){
+            System.out.println(player.getActivePile().get(i).getName());
         }
         System.out.println();
     }
@@ -70,6 +75,7 @@ public class PokemonCardGame {
     public void runGame(){
         while (playerOne.getPrizePile().size() > 0 || playerTwo.getPrizePile().size() > 0){
             System.out.println("Player One's Turn");
+            printField(playerOne, playerTwo);
             playerOne.turn(playerOne, playerTwo);
             checkWinner();
             if (playerOne.getPrizePile().size() == 0){
@@ -77,6 +83,7 @@ public class PokemonCardGame {
             }
 
             System.out.println("Player Two's Turn");
+            printField(playerTwo, playerOne);
             playerTwo.turn(playerTwo, playerOne);
             checkWinner();
             
