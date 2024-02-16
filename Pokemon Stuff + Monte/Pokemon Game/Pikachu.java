@@ -1,13 +1,15 @@
-
+import java.util.ArrayList;
 public class Pikachu extends Pokemon implements Attackable{
     private String attackOne;
     private String attackTwo;
     private String cardName;
+    private ArrayList<ElectricEnergy> energyPile;
     public Pikachu(){
          this.setHp(70);
          this.attackOne = "Quick Attack";
          this.attackTwo = "Electroball";
          this.cardName = "Pikachu";
+         energyPile = new ArrayList<ElectricEnergy>();
     }
      
     //Quick Attack
@@ -31,4 +33,9 @@ public class Pikachu extends Pokemon implements Attackable{
      public String getName(){
         return cardName;
      }
+
+       @Override
+       public void attatchEnergy(){
+         energyPile.add(new ElectricEnergy());
+}
 }

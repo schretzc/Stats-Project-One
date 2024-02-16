@@ -1,11 +1,14 @@
 
+import java.util.ArrayList;
 public class Bulbasaur extends Pokemon implements Attackable {
     private String attackOne;
     private String attackTwo;
+    private ArrayList<WaterEnergy> energyPile;
     public Bulbasaur(){
         setHp(70);
         this.attackOne = "Leech Seed";
         this.attackTwo = "Vine Whip";
+        energyPile = new ArrayList<WaterEnergy>();
     }
 
     //leechseed
@@ -33,5 +36,10 @@ public class Bulbasaur extends Pokemon implements Attackable {
     @Override
     public String getName(){
         return "Bulbasaur";
+    }
+
+    @Override
+    public void attatchEnergy(){
+        energyPile.add(new WaterEnergy());
     }
 }

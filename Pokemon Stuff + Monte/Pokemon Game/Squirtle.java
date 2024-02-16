@@ -1,11 +1,14 @@
+import java.util.ArrayList;
 public class Squirtle extends Pokemon implements Attackable {
     
     private String attackOne;
     private String attackTwo;
+    private ArrayList<WaterEnergy> energyPile;
     public Squirtle(){
         setHp(70);
         this.attackOne = "Tackle";
         this.attackTwo = "Rain Splash";
+         energyPile = new ArrayList<WaterEnergy>();
     }
      
     //Tackle
@@ -29,4 +32,9 @@ public class Squirtle extends Pokemon implements Attackable {
      public String getName(){
         return "Squirtle";
      }
+
+      @Override
+         public void attatchEnergy(){
+            energyPile.add(new WaterEnergy());
+}
 }
