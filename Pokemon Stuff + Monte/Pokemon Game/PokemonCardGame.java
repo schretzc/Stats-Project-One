@@ -70,14 +70,14 @@ public class PokemonCardGame {
     public void runGame(){
         while (playerOne.getPrizePile().size() > 0 || playerTwo.getPrizePile().size() > 0){
             System.out.println("Player One's Turn");
-            playerOne.turn(playerOne);
+            playerOne.turn(playerOne, playerTwo);
             checkWinner();
             if (playerOne.getPrizePile().size() == 0){
                 break;
             }
 
             System.out.println("Player Two's Turn");
-            playerTwo.turn(playerTwo);
+            playerTwo.turn(playerTwo, playerOne);
             checkWinner();
             
     }
