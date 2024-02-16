@@ -131,14 +131,14 @@ public class Player {
         printHand();
     
         // Prompt the player to choose a card to play
-        System.out.println("Choose a card to play: ");
-        int cardNumber = scan.nextInt();
-        playCard(cardNumber, player);
+        System.out.println("Pick a card to play: ");
+        int cardNum = scan.nextInt();
+        playCard(cardNum, player);
     
         // Prompt the player to choose the attack
-        System.out.println("Choose an attack:");
-        System.out.println("1. Attack One");
-        System.out.println("2. Attack Two");
+        System.out.println("Pick an attack:");
+        System.out.println("1: Attack One");
+        System.out.println("2: Attack Two");
     
         int attackNumber = scan.nextInt();
         scan.nextLine(); // Consume newline character
@@ -146,7 +146,7 @@ public class Player {
         if (attackNumber == 1 || attackNumber == 2) {
             Attack(attackNumber, player);
         } else {
-            System.out.println("Invalid attack number. Please choose 1 or 2.");
+            System.out.println("Invalid attack number! Choose 1 or 2.");
         }
         //play card
         //play pokemon
