@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Player {
     private ArrayList<Card> deck;  //this is the constructors job= new Card[];
@@ -9,9 +10,9 @@ public class Player {
     private ArrayList<Card> benchPile;
     private ArrayList<Card> activePile;
     private ArrayList<Pokemon> pokeDex;
-    private ArrayList<Energy> energyDex;
     private ArrayList<Trainer> trainerDex;
     private String name;
+    private Scanner scan = new Scanner(System.in);
 
     public Player(String name){
         deck = new ArrayList<Card>();
@@ -21,13 +22,12 @@ public class Player {
         benchPile = new ArrayList<Card>();
         activePile = new ArrayList<Card>();
         pokeDex = new ArrayList<Pokemon>();
-        energyDex = new ArrayList<Energy>();
         trainerDex = new ArrayList<Trainer>();
         this.name = name;
 
         //fill deck with 20 of each type
         for(int i = 0; i < 20; i++){
-            deck.add(randomEnergy());
+            deck.add(new Energy());
             deck.add(randomTrainer());
             deck.add(randomPokemon());
         } 
@@ -43,14 +43,6 @@ public class Player {
         pokeDex.add(new Bulbasaur());
         pokeDex.add(new Squirtle());
         return pokeDex.get(rand.nextInt(pokeDex.size()));
-    }
-    //stores all energy type cards in an arraylist and randomly returns one
-    public Energy randomEnergy(){
-        Random rand = new Random();
-        energyDex.add(new LeafEnergy());
-        energyDex.add(new ElectricEnergy());
-        energyDex.add(new WaterEnergy());
-        return energyDex.get(rand.nextInt(energyDex.size()));
     }
 
     //stores all pokemon in an arraylist and randomly returns one.
@@ -134,14 +126,99 @@ public class Player {
         prizePile.remove(cardNumber);
     }
 
-    public void turn(){
+    public void turn(Player player) {
         drawCard();
+        printHand();
+    
+        // Prompt the player to choose a card to play
+        System.out.println("Choose a card to play: ");
+        int cardNumber = scan.nextInt();
+        playCard(cardNumber, player);
+    
+        // Prompt the player to choose the attack
+        System.out.println("Choose an attack:");
+        System.out.println("1. Attack One");
+        System.out.println("2. Attack Two");
+    
+        int attackNumber = scan.nextInt();
+        scan.nextLine(); // Consume newline character
+    
+        if (attackNumber == 1 || attackNumber == 2) {
+            Attack(attackNumber, player);
+        } else {
+            System.out.println("Invalid attack number. Please choose 1 or 2.");
+        }
+        //play card
         //play pokemon
         //play energy
         //play trainer
         //attack w/ pokemon
         //attack w/ pokemon and end turn
     }
+    public void playCard(int cardNumber, Player player){
+        if (hand.get(cardNumber) instanceof Pokemon){
+            addToBench(cardNumber);
+        }
+        else if (hand.get(cardNumber) instanceof Energy){
+            attachEnergy(cardNumber);
+        }
+
+        else if (hand.get(cardNumber) instanceof Trainer){
+            //play trainer card
+            playTrainer(cardNumber, player);
+        }
+    }
+    public void attachEnergy(int cardNumber) {
+        if (activePile.isEmpty() || !(activePile.get(0) instanceof Pokemon)) {
+            System.out.println("No active Pokemon to attach energy to.");
+            return;
+        }
+    }
+
+    public void playTrainer(int cardNumber, Player player){
+        if (hand.get(cardNumber) instanceof Trainer){
+            Trainer trainerCard = (Trainer) hand.get(cardNumber);
+            trainerCard.playable(player);
+            discardCard(cardNumber);
+        }
+    
+        Pokemon activePokemon = (Pokemon) activePile.get(0);
+        Energy energyCard = (Energy) hand.get(cardNumber);
+    
+        // Call the Pokemon's method to attach energy
+        activePokemon.attachEnergy(energyCard);
+    
+        // Move energy card from hand to discard pile
+        discardCard(cardNumber);
+    }
+
+    public void Attack(int attackNumber, Player targetPlayer) {
+        if (activePile.isEmpty() || !(activePile.get(0) instanceof Pokemon)) {
+            System.out.println("No active Pokemon to attack with.");
+            return;
+        }
+    
+        // Retrieve the active Pokemon
+        Pokemon activePokemon = (Pokemon) activePile.get(0);
+
+        ArrayList<Card> opponentActivePile = targetPlayer.getActivePile();
+
+        Pokemon opponentPokemon = (Pokemon) opponentActivePile.get(0);
+    
+        // Check the chosen attack and perform the corresponding action
+        switch (attackNumber) {
+            case 1:
+                activePokemon.attackOne(opponentPokemon);
+                break;
+            case 2:
+                activePokemon.attackTwo(opponentPokemon);
+                break;
+            default:
+                System.out.println("Invalid attack number. Please choose 1 or 2.");
+                break;
+        }
+    }
+    
 
     public ArrayList<Card> getDeck(){
         return deck;

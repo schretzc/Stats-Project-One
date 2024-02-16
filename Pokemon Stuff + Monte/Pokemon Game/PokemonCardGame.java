@@ -1,13 +1,23 @@
 //Christopher Schretzmann
 import java.util.ArrayList;
+import java.util.Scanner;
 public class PokemonCardGame {
     //deck of cards
     private Player playerOne;
     private Player playerTwo;
+    private Scanner scan = new Scanner(System.in);
+    private String name1;
+    private String name2;
    
     public PokemonCardGame(){
-        playerOne = new Player("Player One");
-        playerTwo = new Player("Player Two");
+        System.out.println("Player One,  enter your name: ");
+        name1 = scan.nextLine();
+
+        System.out.println("Player Two,  enter your name: ");
+        name2 = scan.nextLine();
+        playerOne = new Player(name1);
+        playerTwo = new Player(name2);
+        setupGame();
     }
 
     public ArrayList<Card> getDeck(Player player){
@@ -51,27 +61,38 @@ public class PokemonCardGame {
     }
 
     public void setupGame(){
+        playerOne.drawHand();
+        playerTwo.drawHand();
+        playerOne.drawPrizePile();
+        playerTwo.drawPrizePile();
     }
 
-    // public void runGame(){
-        // while (playerOne.getPrizePile().size() > 0 || playerTwo.getPrizePile().size() > 0){
-            // playerOne.turn();
-            // playerTwo.turn();
-            //
-    // }
-    // setupGame();
-// }
-
-        public void runGame(){
-            playerOne.drawHand();
-            playerTwo.drawHand();
-            playerOne.drawPrizePile();
-            playerTwo.drawPrizePile();
-            printHand(playerOne);
-            printHand(playerTwo);
-            printPrizePile(playerOne);
-            printPrizePile(playerTwo);
+    public void runGame(){
+        while (playerOne.getPrizePile().size() > 0 || playerTwo.getPrizePile().size() > 0){
+            System.out.println("Player One's Turn");
+            playerOne.turn(playerOne);
+            checkWinner();
+            if (playerOne.getPrizePile().size() == 0){
+                break;
             }
+
+            System.out.println("Player Two's Turn");
+            playerTwo.turn(playerTwo);
+            checkWinner();
+            
+    }
+}
+
+       // public void runGame(){
+       //     playerOne.drawHand();
+        //    playerTwo.drawHand();
+        //    playerOne.drawPrizePile();
+        //    playerTwo.drawPrizePile();
+        //    printHand(playerOne);
+        //    printHand(playerTwo);
+         //   printPrizePile(playerOne);
+         //   printPrizePile(playerTwo);
+         //   }
 
     
     public void runGame1(){

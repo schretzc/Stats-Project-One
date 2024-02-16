@@ -29,7 +29,7 @@ public class NestBall extends Trainer {
         tempPokemon.remove(saveRandomNumber);
 
         for(int j = 0; j< tempPokemon.size(); j++){
-            deck.add(tempPokemon.get(i));
+            deck.add(tempPokemon.get(j));
         }
         System.out.println("Nest Ball has been played");
         System.out.println(player.getName() + " has searched their deck for a pokemon");
