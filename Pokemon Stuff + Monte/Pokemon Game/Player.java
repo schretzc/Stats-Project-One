@@ -303,7 +303,7 @@ public class Player {
             System.out.println("3: End turn");
         
             int actionChoice = scan.nextInt();
-            scan.nextLine(); // Consume newline character
+            scan.nextLine();
         
             if (actionChoice == 1) {
                 cardSelection(player);
