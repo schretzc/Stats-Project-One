@@ -250,11 +250,13 @@ public class Player {
             opponentActivePile.remove(0);
             
             //allows current player to grab a new cardv from prize pile if knockout
-            System.out.println("Choose a new card from your prize pile:");
-            currentPlayer.printBench();
-            int prizePokemon = scan.nextInt() - 1;
-            currentPlayer.hand.add(currentPlayer.benchPile.get(prizePokemon));
-            currentPlayer.benchPile.remove(prizePokemon);
+            
+            //currentPlayer.printPrizePile();
+            //int prizePokemon = scan.nextInt() - 1;
+            currentPlayer.hand.add(currentPlayer.prizePile.get(0));
+            System.out.println(currentPlayer.prizePile.get(0).getName() + " added to hand");
+            currentPlayer.prizePile.remove(0);
+            
         }
     }
     
