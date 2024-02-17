@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -223,6 +224,11 @@ public class Player {
 
         ArrayList<Card> opponentActivePile = targetPlayer.getActivePile();
         ArrayList<Card> opponentBenchPile = targetPlayer.getBenchPile();
+        if (opponentActivePile.isEmpty()) {
+            System.out.println("Opponent has no active Pokemon!");
+            return;
+        }
+        ArrayList<Card> opponentDiscardPile = targetPlayer.getDiscardPile();
         
         ArrayList<Card> currentPrizePile = currentPlayer.getPrizePile();
         ArrayList<Card> currentActivePile = currentPlayer.getActivePile();
@@ -246,7 +252,7 @@ public class Player {
         //checks fainted pokemon
         if (opponentPokemon.getHp() <= 0) {
             System.out.println("Opponent's Pokemon fainted!");
-            targetPlayer.discardPile.add(opponentPokemon);
+            opponentDiscardPile.add(opponentActivePile.get(0));
             opponentActivePile.remove(0);
             
             //allows current player to grab a new cardv from prize pile if knockout
