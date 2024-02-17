@@ -32,7 +32,7 @@ public class Bulbasaur extends Pokemon{
     }
     //vine whip
     public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
-        if (energyPile.size() < 2){
+        if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
             return;
         }
