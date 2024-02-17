@@ -12,7 +12,7 @@ public class Bulbasaur extends Pokemon{
     }
 
     //leechseed
-    public void attackOne(Pokemon target){
+    public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
         //deal 20 damage heal 20
         if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
@@ -31,7 +31,7 @@ public class Bulbasaur extends Pokemon{
     }
     }
     //vine whip
-    public void attackTwo(Pokemon target){
+    public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
         if (energyPile.size() < 2){
             System.out.println("Not enough energy to perform this attack");
             return;

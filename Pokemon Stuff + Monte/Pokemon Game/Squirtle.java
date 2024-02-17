@@ -12,7 +12,7 @@ public class Squirtle extends Pokemon {
     }
      
     //Tackle
-    public void attackOne(Pokemon target){
+    public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
       if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
             return;
@@ -26,7 +26,7 @@ public class Squirtle extends Pokemon {
         }
      }
      //Rain Splash
-        public void attackTwo(Pokemon target){
+        public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
       if (energyPile.size() < 1){
             System.out.println("Not enough energy to perform this attack");
             return;

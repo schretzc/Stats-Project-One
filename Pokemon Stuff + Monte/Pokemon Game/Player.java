@@ -142,8 +142,8 @@ public class Player {
 
     public void turn(Player player, Player targetPlayer) {
         drawCard();
-        printHand();
-        System.out.println();
+        //printHand();
+        //System.out.println();
         playerAction(player, targetPlayer);
         System.out.println();
         // Prompt the player to choose a card to play cardSelection method
@@ -167,7 +167,7 @@ public class Player {
         }
         //if its an energy card, call attatchenergy
         else if (hand.get(cardNumber) instanceof Energy){
-            attachEnergy(cardNumber);
+            addEnergy(cardNumber);
             System.out.println("Added to active");
             System.out.println(name);
         }
@@ -179,24 +179,26 @@ public class Player {
             System.out.println();
         }
     }
-    public void attachEnergy(int cardNumber) {
+    public void addEnergy(int cardNumber) {
         //if hand is instance of energy error case
-        if(hand.get(cardNumber) instanceof Energy){
-            //***if the active pile is empty or the active pile is not pokemon
-            if (activePile.isEmpty() || !(activePile.get(0) instanceof Pokemon)) {
-                System.out.println("No active Pokemon to attach energy to.");
-                return;
-            }
-            //create new vatiables for the active pokemon and energy card
-            Pokemon activePokemon = (Pokemon) activePile.get(0);
-            Energy energyCard = (Energy) hand.get(cardNumber);
-    
-            // Call the Pokemon's method to attach energy
-            activePokemon.attachEnergy(energyCard);
-
-            // Move energy card from hand to discard pile
-            discardCard(cardNumber);
+        if (activePile.isEmpty()){
+            System.out.println("No active Pokemon to attach energy to.");
+            return;
         }
+
+        if(hand.get(cardNumber) instanceof Energy == false){
+            System.out.println("Not an energy card");
+            return;
+        }
+
+        Pokemon activePokemon = (Pokemon) activePile.get(0);
+        Energy energyCard = (Energy) hand.get(cardNumber);
+
+        activePokemon.addEnergy(energyCard);
+
+        //remove energy card from hand
+        discardCard(cardNumber);
+        System.out.println("Energy added to active Pokemon");
     }
 
     public void playTrainer(int cardNumber, Player player){
@@ -226,14 +228,15 @@ public class Player {
         ArrayList<Card> currentActivePile = currentPlayer.getActivePile();
 
         Pokemon opponentPokemon = (Pokemon) opponentActivePile.get(0);
+        Pokemon currentPokemon = (Pokemon) currentActivePile.get(0);
     
         // Check the chosen attack and perform the selected attack
         switch (attackNumber) {
             case 1:
-                activePokemon.attackOne(opponentPokemon);
+                activePokemon.attackOne(opponentPokemon, currentPokemon.getEnergyPile());
                 break;
             case 2:
-                activePokemon.attackTwo(opponentPokemon);
+                activePokemon.attackTwo(opponentPokemon, currentPokemon.getEnergyPile());
                 break;
             default:
                 System.out.println("Invalid attack number. Please choose 1 or 2.");
@@ -308,16 +311,29 @@ public class Player {
           }
         }
 
+        public void benchToActive(int cardNumber){
+            if (activePile.size() < 1){
+                activePile.add(benchPile.get(cardNumber));
+                benchPile.remove(cardNumber);
+            }
+            else {
+                System.out.println("Active is full");
+            }
+        }
+
         public void playerAction(Player player, Player targetPlayer){
             //while the continueTurn keep playing turn
             //if the player ends turn, condition turns false causing turn loop to end.
             boolean continueTurn = true;
             while(continueTurn == true){
             // ask the player to choose an action number
+            player.printHand();
+            System.out.println();
             System.out.println("Choose an action:");
             System.out.println("1: Play a card");
-            System.out.println("2: Attack");
-            System.out.println("3: End turn");
+            System.out.println("2: Move a Pokemon from bench to active");
+            System.out.println("3: Attack");
+            System.out.println("4: End turn");
             System.out.println();
         
             int actionChoice = scan.nextInt();
@@ -326,8 +342,13 @@ public class Player {
             if (actionChoice == 1) {
                 cardSelection(player);
             } else if (actionChoice == 2) {
+                System.out.println("Choose a Pokemon to move from bench to active:");
+                player.printBench();
+                int benchPokemon = scan.nextInt() - 1;
+                benchToActive(benchPokemon);
+            }else if (actionChoice == 3) {
                 attackPhase(player, targetPlayer);
-            } else if (actionChoice == 3) {
+            } else if (actionChoice == 4) {
                 System.out.println("Turn ended.");
                 System.out.println();
                 continueTurn = false;

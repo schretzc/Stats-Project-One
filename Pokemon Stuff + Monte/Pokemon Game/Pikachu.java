@@ -3,17 +3,16 @@ public class Pikachu extends Pokemon{
     private String attackOne;
     private String attackTwo;
     private String cardName;
-    private ArrayList<Energy> energyPile;
     public Pikachu(){
          this.setHp(70);
          this.attackOne = "Quick Attack";
          this.attackTwo = "Electroball";
          this.cardName = "Pikachu";
-         energyPile = new ArrayList<Energy>();
+         
     }
      
     //Quick Attack
-    public void attackOne(Pokemon target){
+    public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
          if (energyPile.size() < 1){
              System.out.println("Not enough energy to perform this attack");
              return;
@@ -27,7 +26,7 @@ public class Pikachu extends Pokemon{
          }
      }
      //electroball
-        public void attackTwo(Pokemon target){
+        public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
          if (energyPile.size() < 1){
              System.out.println("Not enough energy to perform this attack");
              return;

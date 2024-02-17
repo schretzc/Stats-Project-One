@@ -108,27 +108,4 @@ public class PokemonCardGame {
          //   printPrizePile(playerTwo);
          //   }
 
-    
-    public void runGame1(){
-        Pikachu pikaMain = new Pikachu();
-        Pikachu pikaTarget = new Pikachu();
-        Bulbasaur newBulb = new Bulbasaur();
-
-        newBulb.attackOne(pikaMain);
-        System.out.println("Pika Main Hp: " + pikaMain.getHp() + " Bulbasaur Hp: " + newBulb.getHp());
-
-        pikaMain.attackOne(newBulb);
-
-        while(pikaTarget.getHp() > 0){
-            pikaMain.attackOne(pikaTarget);
-            //System.out.println("Pika Target Hp:" + pikaTarget.getHp());
-            if (pikaTarget.getHp() == 0){
-                System.out.println("Pika Target HP:" + pikaTarget.getHp());
-                System.out.println("Pika Target has fainted!!!");
-            }
-            else{
-                System.out.println("Pika Target HP:" + pikaTarget.getHp());
-            }
-        }
-    }
 }

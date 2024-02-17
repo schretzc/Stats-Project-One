@@ -11,10 +11,18 @@ public class Pokemon extends Card implements Attackable{
         
     }
 
-    public void attackOne(Pokemon target){
+    public ArrayList<Energy> getEnergyPile(){
+        return energyPile;
+    }
+
+    public void addEnergy(Energy energy){
+        energyPile.add(energy);
+    }
+
+    public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
         
     }
-    public void attackTwo(Pokemon target){
+    public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
     }
     
     public int getHp(){
@@ -25,7 +33,5 @@ public class Pokemon extends Card implements Attackable{
         this.hp = userInputHp;
     } 
 
-    public void attachEnergy(Energy energyCard) {
-        energyPile.add(energyCard);
-    }
+    
 }
