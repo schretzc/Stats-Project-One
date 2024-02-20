@@ -86,6 +86,7 @@ public class PokemonCardGame {
         while (playerOne.getPrizePile().size() > 0 || playerTwo.getPrizePile().size() > 0){
             System.out.println("Player One's Turn");
             printField(playerOne, playerTwo);
+            playerOne.printHand();
             playerOne.turn(playerOne, playerTwo);
             //checkWinner();
             if (checkWinner() == true){
@@ -94,6 +95,7 @@ public class PokemonCardGame {
 
             System.out.println("Player Two's Turn");
             printField(playerTwo, playerOne);
+            playerTwo.printHand();
             playerTwo.turn(playerTwo, playerOne);
             //checkWinner();
             if (checkWinner() == true){

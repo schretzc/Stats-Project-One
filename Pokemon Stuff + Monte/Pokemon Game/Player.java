@@ -143,7 +143,7 @@ public class Player {
 
     public void turn(Player player, Player targetPlayer) {
         drawCard();
-        //printHand();
+        //print hand
         //System.out.println();
         playerAction(player, targetPlayer);
         System.out.println();
@@ -223,16 +223,17 @@ public class Player {
         //prizePile = targetPlayer.getPrizePile();
 
         ArrayList<Card> opponentActivePile = targetPlayer.getActivePile();
-        ArrayList<Card> opponentBenchPile = targetPlayer.getBenchPile();
+        //ArrayList<Card> opponentBenchPile = targetPlayer.getBenchPile();
         if (opponentActivePile.isEmpty()) {
             System.out.println("Opponent has no active Pokemon!");
             return;
         }
         ArrayList<Card> opponentDiscardPile = targetPlayer.getDiscardPile();
         
-        ArrayList<Card> currentPrizePile = currentPlayer.getPrizePile();
+       // ArrayList<Card> currentPrizePile = currentPlayer.getPrizePile();
         ArrayList<Card> currentActivePile = currentPlayer.getActivePile();
 
+        //since active pile is card, we need to cast it to pokemon
         Pokemon opponentPokemon = (Pokemon) opponentActivePile.get(0);
         Pokemon currentPokemon = (Pokemon) currentActivePile.get(0);
     
@@ -307,7 +308,7 @@ public class Player {
             boolean continueTurn = true;
             while(continueTurn == true){
             // ask the player to choose an action number
-            player.printHand();
+            //player.printHand();
             System.out.println();
             System.out.println("Choose an action:");
             System.out.println("1: Play a card");
