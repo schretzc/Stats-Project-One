@@ -267,34 +267,6 @@ public class Player {
     }
     
 
-    public ArrayList<Card> getDeck(){
-        return deck;
-    }
-
-    public ArrayList<Card> getHand(){
-        return hand;
-    }
-
-    public ArrayList<Card> getPrizePile(){
-        return prizePile;
-    }
-
-    public ArrayList<Card> getDiscardPile(){
-        return discardPile;
-    }
-
-    public ArrayList<Card> getBenchPile(){
-        return benchPile;
-    }
-
-    public ArrayList<Card> getActivePile(){
-        return activePile;
-    }
-
-    public String getName(){
-        return name;
-    }
-
     public void cardSelection(Player player){
          // Prompt the player to choose a card to play
          System.out.println("Pick a card to play: ");
@@ -368,6 +340,34 @@ public class Player {
                 System.out.println("Invalid action number! Choose 1, 2, or 3.");
             }
         }
+    }
+
+    public ArrayList<Card> getDeck(){
+        return deck;
+    }
+
+    public ArrayList<Card> getHand(){
+        return hand;
+    }
+
+    public ArrayList<Card> getPrizePile(){
+        return prizePile;
+    }
+
+    public ArrayList<Card> getDiscardPile(){
+        return discardPile;
+    }
+
+    public ArrayList<Card> getBenchPile(){
+        return benchPile;
+    }
+
+    public ArrayList<Card> getActivePile(){
+        return activePile;
+    }
+
+    public String getName(){
+        return name;
     }
      
 }
