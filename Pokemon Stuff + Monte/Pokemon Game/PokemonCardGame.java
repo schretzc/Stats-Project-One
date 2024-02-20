@@ -63,13 +63,16 @@ public class PokemonCardGame {
     public void printCardStats(Player player){
     }
 
-    public void checkWinner(){
+    public boolean checkWinner(){
         if (playerOne.getPrizePile().size() == 0){
             System.out.println(playerTwo.getName() + " has won the game!!!");
+            return true;
         }
         if(playerTwo.getPrizePile().size() == 0){
             System.out.println(playerOne.getName() + " has won the game!!!");
+            return true;
         }
+        return false;
     }
 
     public void setupGame(){
@@ -84,28 +87,20 @@ public class PokemonCardGame {
             System.out.println("Player One's Turn");
             printField(playerOne, playerTwo);
             playerOne.turn(playerOne, playerTwo);
-            checkWinner();
-            if (playerOne.getPrizePile().size() == 0){
+            //checkWinner();
+            if (checkWinner() == true){
                 break;
             }
 
             System.out.println("Player Two's Turn");
             printField(playerTwo, playerOne);
             playerTwo.turn(playerTwo, playerOne);
-            checkWinner();
+            //checkWinner();
+            if (checkWinner() == true){
+                break;
+            }
             
     }
 }
-
-       // public void runGame(){
-       //     playerOne.drawHand();
-        //    playerTwo.drawHand();
-        //    playerOne.drawPrizePile();
-        //    playerTwo.drawPrizePile();
-        //    printHand(playerOne);
-        //    printHand(playerTwo);
-         //   printPrizePile(playerOne);
-         //   printPrizePile(playerTwo);
-         //   }
 
 }

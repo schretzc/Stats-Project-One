@@ -220,7 +220,7 @@ public class Player {
     
         // Retrieve the active Pokemon
         Pokemon activePokemon = (Pokemon) activePile.get(0);
-        prizePile = targetPlayer.getPrizePile();
+        //prizePile = targetPlayer.getPrizePile();
 
         ArrayList<Card> opponentActivePile = targetPlayer.getActivePile();
         ArrayList<Card> opponentBenchPile = targetPlayer.getBenchPile();
@@ -350,10 +350,14 @@ public class Player {
             if (actionChoice == 1) {
                 cardSelection(player);
             } else if (actionChoice == 2) {
+                if (benchPile.size() == 0){
+                    System.out.println("No Pokemon in bench to move to active.");
+                }
+                else{
                 System.out.println("Choose a Pokemon to move from bench to active:");
                 player.printBench();
                 int benchPokemon = scan.nextInt() - 1;
-                benchToActive(benchPokemon);
+                benchToActive(benchPokemon);}
             }else if (actionChoice == 3) {
                 attackPhase(player, targetPlayer);
             } else if (actionChoice == 4) {
