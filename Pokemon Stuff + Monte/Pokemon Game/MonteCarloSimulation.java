@@ -4,6 +4,7 @@ import java.util.Random;
 public  class MonteCarloSimulation{
 private ArrayList<Card> deck;  //this is the constructors job= new Card[];
 private ArrayList<Card> hand;
+
 public  MonteCarloSimulation(){
 this.deck = new ArrayList<Card>();
 this.hand = new ArrayList<Card>();
