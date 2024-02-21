@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Player {
     private ArrayList<Card> deck;  //this is the constructors job= new Card[];
     private ArrayList<Card> hand;
@@ -15,6 +16,14 @@ public class Player {
     private String name;
     private Scanner scan = new Scanner(System.in);
 
+
+    /**
+     * Contructs a player and initializes deck or cards, hand of cards, prizePile of cards, discardPile of cards, benchPile
+     * of cards and ActivePile of cards.
+     * The pokeDex and trainerDex variables hold all of the types of each type to have an array of all cards of that type.
+     * Constructs initial deck
+     * @param name is the name of the 
+     */
     public Player(String name){
         deck = new ArrayList<Card>();
         hand = new ArrayList<Card>();
@@ -37,7 +46,11 @@ public class Player {
          //   prizePile.add(new Pokemon());
        // }  
     }
-    //stores all pokemon in an arraylist and randomly returns one.
+    
+    /**
+     * randomly selects a pokemon from pokedex
+     * @return returns random pokemon from array of all pokemon types in the game.
+     */
     public Pokemon randomPokemon(){
         Random rand = new Random();
         pokeDex.add(new Pikachu());
@@ -46,7 +59,10 @@ public class Player {
         return pokeDex.get(rand.nextInt(pokeDex.size()));
     }
 
-    //stores all pokemon in an arraylist and randomly returns one.
+    /**
+     * randomly selects from all trainers in the game stored in trainerdex.
+     * @return returns a random trainer card
+     */
     public Trainer randomTrainer(){
         Random rand = new Random();
         trainerDex.add(new ProfessorsResearch());
@@ -56,8 +72,12 @@ public class Player {
 
     
     
-    //draws card randomly from deck and puts it in hand. 
-     public void drawCard() { 
+    
+     /**
+     * Randomly draws a card from the deck
+     * removes the card from deck and adds it to hand
+     */
+    public void drawCard() { 
         Random rng = new Random();
         //System.out.println(deck.size());
         int cardIndex = rng.nextInt(deck.size() ); //find random card
@@ -66,45 +86,65 @@ public class Player {
         hand.add(drawnCard);
     }
 
-    //draw the seven card for the prize pile
+    
+    /**
+     * Draws the prize pile for the player
+     * Uses loop to draw the 6 cards
+     */
     public void drawPrizePile(){
         Random rng = new Random();
         //System.out.println(deck.size());
         for(int i = 0; i < 6; i++) { //counting to 7       
-            int cardIndex = rng.nextInt(deck.size() ); //find random card
+            int cardIndex = rng.nextInt(deck.size()); //find random card
             Card drawnCard = deck.get(cardIndex); 
             deck.remove(cardIndex);
             prizePile.add(drawnCard);
         }
     }
 
-    //Draw hand of seven cards
+    
+    /**
+     * Draws a hand of 7 cards using  loop and drawCard() method
+     */
     public void drawHand(){
         for(int i = 0; i < 7; i++) { //counting to 7       
             drawCard();
         }
     }
 
-    //discards card from hand and adds it to discard pile
+    
+    /**
+     * Removes card from hand and adds to discard pile
+     * @param cardIndex index of card to remove
+     */
     public void discardCard(int cardIndex){
         discardPile.add(hand.get(cardIndex));
         hand.remove(cardIndex);
     }
 
-    //evaluates hand to see if there is a pokemon card.
-    //returns true if so
+    
+    /**
+     * Prints the hand with index
+     */
     public void printHand(){
         for(int i = 0; i < hand.size(); i++){
             System.out.println(i+1 + ": " + hand.get(i).getName() + " ");
         }
     }
 
+    /**
+     * Prints the bench pile
+     */
     public void printBench(){
         for(int i = 0; i < benchPile.size(); i++){
             System.out.println(i+1 + ": " + benchPile.get(i).getName() + " ");
         }
     }
 
+    /**
+     * Prints entire field
+     * this includes hand, bench, and active pile
+     */
     public void printField(){
         System.out.println("Hand: ");
         printHand();
@@ -113,7 +153,12 @@ public class Player {
         System.out.println("Active: ");
         System.out.println(activePile.get(0).getName());}
 
-    //adds card to bench pile if bench pile is not full
+
+    /**
+     * adds card from hand to bench pile if the prize pile
+     * If the bench pile is greater than 5, print bench is full
+     * @param cardNumber number of card from hand
+     */
     public void addToBench(int cardNumber){
         if (benchPile.size() < 5){
             benchPile.add(hand.get(cardNumber));
@@ -124,7 +169,11 @@ public class Player {
         }
     }
 
-    //adds card to the active pile if the pile is empty
+    /**
+     * Adds selected card from hand to active if it is less than 1
+     * if the active pile is full, print active is full
+     * @param cardNumber number of card in hand
+     */
     public void addToActive(int cardNumber){
         if (activePile.size() < 1){
             activePile.add(hand.get(cardNumber));
@@ -135,12 +184,23 @@ public class Player {
         }
     }
 
-    //removes prize card from prize pile and adds it to hand
+    
+    /**
+     * removes selected card from prize pile
+     * @param cardNumber index of card to remove
+     */
     public void removePrizeCard(int cardNumber){
         hand.add(prizePile.get(cardNumber));
         prizePile.remove(cardNumber);
     }
 
+    /**
+     * in a turn a card is drawn
+     * next the playerAction is carried out
+     * println just for spacing
+     * @param player current player that is taking the turn
+     * @param targetPlayer opponent player that is taking the turn
+     */
     public void turn(Player player, Player targetPlayer) {
         drawCard();
         //print hand
@@ -159,6 +219,12 @@ public class Player {
         //attack w/ pokemon
         //attack w/ pokemon and end turn
     }
+    /**
+     * plays the card selected 
+     * depending of the instance of card, method carries out specific rules for each card
+     * @param cardNumber index of card number to be played for trainer card purposes
+     * @param player player that is playing the card
+     */
     public void playCard(int cardNumber, Player player){
         //if its a pokemon card, add to bench since thats the only place it can go
         if (hand.get(cardNumber) instanceof Pokemon){
@@ -180,6 +246,14 @@ public class Player {
             System.out.println();
         }
     }
+    
+    /**
+     * checks if the card chosen is energy
+     * if the active pile is empty, there is no pokemon to attach the energy to
+     * if the card chosen is not an instance of energy, it isnt an energy card
+     * adds energy to pokemon in active pile
+     * @param cardNumber number of card to add
+     */
     public void addEnergy(int cardNumber) {
         //if hand is instance of energy error case
         if (activePile.isEmpty()){
@@ -202,6 +276,13 @@ public class Player {
         System.out.println("Energy added to active Pokemon");
     }
 
+
+    /**
+     * plays trainer card
+     * checks if the card is a trainer
+     * @param cardNumber inded of card in hand
+     * @param player player playing the card for trainer effects
+     */
     public void playTrainer(int cardNumber, Player player){
         //if it is a trainer card, play it
         if (hand.get(cardNumber) instanceof Trainer){
@@ -211,6 +292,12 @@ public class Player {
         }
     }
 
+    /**
+     * takes
+     * @param attackNumber number of attack. interface requires two attacks
+     * @param currentPlayer player who is attacking
+     * @param targetPlayer player who is getting attacked
+     */
     public void Attack(int attackNumber, Player currentPlayer, Player targetPlayer) {
         //if active pile is empty error case
         if (activePile.isEmpty() || !(activePile.get(0) instanceof Pokemon)) {
@@ -370,5 +457,4 @@ public class Player {
     public String getName(){
         return name;
     }
-     
 }
