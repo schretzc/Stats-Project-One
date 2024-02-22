@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * Player class that plays pokemon game.
+ * @Author Christopher Schretzmann
+ * 
+ */
 public class Player {
     private ArrayList<Card> deck;  //this is the constructors job= new Card[];
     private ArrayList<Card> hand;
