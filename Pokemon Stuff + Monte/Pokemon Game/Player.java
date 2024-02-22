@@ -335,7 +335,6 @@ public class Player {
                 System.out.println("Invalid attack number. Please choose 1 or 2.");
                 break;
         }
-
         //checks fainted pokemon
         if (opponentPokemon.getHp() <= 0) {
             System.out.println("Opponent's Pokemon fainted!");
@@ -354,6 +353,10 @@ public class Player {
     }
     
 
+    /**
+     * prompts player to choose card to play
+     * @param player player that is selecting the card
+     */
     public void cardSelection(Player player){
          // Prompt the player to choose a card to play
          System.out.println("Pick a card to play: ");
@@ -362,6 +365,12 @@ public class Player {
 
     }
 
+    /**
+     * Since there is an interface for the pokemon to have two attack, this method
+     * picks an attack from the two to use using scanner.
+     * @param player player who has a turn
+     * @param targetPlayer player who is the opponent
+     */
     public void attackPhase(Player player, Player targetPlayer){
           // Prompt the player to choose the attack
           System.out.println("Pick an attack:");
@@ -378,6 +387,11 @@ public class Player {
           }
         }
 
+        /**
+         * chooses card from the bench to add to active
+         * if the active pile is full, print active is full
+         * @param cardNumber number from the bench 
+         */
         public void benchToActive(int cardNumber){
             if (activePile.size() < 1){
                 activePile.add(benchPile.get(cardNumber));
@@ -388,6 +402,13 @@ public class Player {
             }
         }
 
+        /**
+         * while continue turn is true or until the player ends turn
+         * allows current player to choose from an action
+         * turn continues until player inputs 4 to end turn
+         * @param player player who has current turn
+         * @param targetPlayer opponent player for that turn
+         */
         public void playerAction(Player player, Player targetPlayer){
             //while the continueTurn keep playing turn
             //if the player ends turn, condition turns false causing turn loop to end.
@@ -429,30 +450,51 @@ public class Player {
         }
     }
 
+    /**
+     * @return returns deck
+     */
     public ArrayList<Card> getDeck(){
         return deck;
     }
 
+    /**
+     * @return returns hand
+     */
     public ArrayList<Card> getHand(){
         return hand;
     }
 
+    /**
+     * @return returns prizepile
+     */
     public ArrayList<Card> getPrizePile(){
         return prizePile;
     }
 
+    /**
+     * @return returns discard pile for whatever reason
+     */
     public ArrayList<Card> getDiscardPile(){
         return discardPile;
     }
 
+    /**
+     * @return returns bench pile
+     */
     public ArrayList<Card> getBenchPile(){
         return benchPile;
     }
 
+    /**
+     * @return returns active pile
+     */
     public ArrayList<Card> getActivePile(){
         return activePile;
     }
 
+    /**
+     * @return returns name of player
+     */
     public String getName(){
         return name;
     }
