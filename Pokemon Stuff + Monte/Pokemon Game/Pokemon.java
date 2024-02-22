@@ -1,17 +1,33 @@
+import java.util.ArrayList;
 
-public class Pokemon extends Card {
+/**
+ * pokemon is a card type that implements the attackable interface
+ * each pokemon has hp and an energypile
+ * every pokemon has two attacks
+ */
+public class Pokemon extends Card implements Attackable{
     
     private int hp;
+    private ArrayList<Energy> energyPile;
 
     public Pokemon(){
         this.hp = 70;
+        energyPile = new ArrayList<Energy>();
         
     }
 
-    public void attackOne(){
+    public ArrayList<Energy> getEnergyPile(){
+        return energyPile;
+    }
+
+    public void addEnergy(Energy energy){
+        energyPile.add(energy);
+    }
+
+    public void attackOne(Pokemon target, ArrayList<Energy> energyPile){
         
     }
-    public void attackTwo(){
+    public void attackTwo(Pokemon target, ArrayList<Energy> energyPile){
     }
     
     public int getHp(){
@@ -20,5 +36,7 @@ public class Pokemon extends Card {
 
     public void setHp(int userInputHp){
         this.hp = userInputHp;
-    }    
+    } 
+
+    
 }

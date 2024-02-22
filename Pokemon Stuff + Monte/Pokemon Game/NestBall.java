@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * nestball is a trainser card that searches deck for pokemon and randomly chooses from the pokemon in deck
+ * this pokemon is added to bench
+ */
 public class NestBall extends Trainer {
     
     @Override
@@ -29,7 +33,7 @@ public class NestBall extends Trainer {
         tempPokemon.remove(saveRandomNumber);
 
         for(int j = 0; j< tempPokemon.size(); j++){
-            deck.add(tempPokemon.get(i));
+            deck.add(tempPokemon.get(j));
         }
         System.out.println("Nest Ball has been played");
         System.out.println(player.getName() + " has searched their deck for a pokemon");

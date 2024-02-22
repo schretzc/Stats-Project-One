@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+/**
+ * trainer card that discards hand and draws new hand
+ */
 public class ProfessorsResearch extends Trainer {
     public ProfessorsResearch(){
     }
@@ -7,10 +10,7 @@ public class ProfessorsResearch extends Trainer {
         ArrayList<Card> deck = player.getDeck();
         ArrayList<Card> hand = player.getHand();
         ArrayList<Card> discard = player.getDiscardPile();;
-        for(int i = 0; i < hand.size(); i++){
-            discard.add(hand.get(0));
-            hand.remove(0);
-        }
+        hand.clear();
         for(int i = 0; i < 7; i++){
             hand.add(deck.get(0));
             deck.remove(0);
