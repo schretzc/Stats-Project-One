@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+/**
+ * pikachu is a pokemon
+ * attacks are quick attack and electroball
+ */
 public class Pikachu extends Pokemon{
     private String attackOne;
     private String attackTwo;

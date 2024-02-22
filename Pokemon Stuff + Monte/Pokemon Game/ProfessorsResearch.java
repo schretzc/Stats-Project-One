@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+/**
+ * trainer card that discards hand and draws new hand
+ */
 public class ProfessorsResearch extends Trainer {
     public ProfessorsResearch(){
     }

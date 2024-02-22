@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * nestball is a trainser card that searches deck for pokemon and randomly chooses from the pokemon in deck
+ * this pokemon is added to bench
+ */
 public class NestBall extends Trainer {
     
     @Override

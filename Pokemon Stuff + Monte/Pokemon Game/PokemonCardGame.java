@@ -1,6 +1,11 @@
 //Christopher Schretzmann
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * A pokemon game consists of two players
+ * each player has a name of course
+ * this runs the pokemon game
+ */
 public class PokemonCardGame {
     //deck of cards
     private Player playerOne;
@@ -9,6 +14,10 @@ public class PokemonCardGame {
     private String name1;
     private String name2;
    
+    /**
+     * constructs a game
+     * inputs two players into the game and sets the game up
+     */
     public PokemonCardGame(){
         System.out.println("Player One,  enter your name: ");
         name1 = scan.nextLine();
@@ -20,10 +29,19 @@ public class PokemonCardGame {
         setupGame();
     }
 
+    /**
+     * 
+     * @param player player who has current turn
+     * @return returns deck of player
+     */
     public ArrayList<Card> getDeck(Player player){
         return player.getDeck();
     }
 
+    /**
+     * prints current player's deck with each card numbered
+     * @param player player with current turn
+     */
     public void printHand(Player player){
         System.out.println(player.getName() + "'s Current Hand:");
         for (int i = 0; i < player.getHand().size(); i++){
@@ -32,6 +50,11 @@ public class PokemonCardGame {
         System.out.println();
     }
 
+    /**
+     * prints the entire field with the current player's info first
+     * @param player current player with turn
+     * @param target opponents player of turn
+     */
     public void printField(Player player, Player target){
         System.out.println(player.getName() + "'s Field ");
         for (int i = 0; i < player.getActivePile().size(); i++){
@@ -52,6 +75,11 @@ public class PokemonCardGame {
         System.out.println();
     
     }
+
+    /**
+     * prints the prize pile of current player
+     * @param player player with current turn
+     */
     public void printPrizePile(Player player){
         System.out.println(player.getName() + "'s Field: ");
         for (int i = 0; i < player.getActivePile().size(); i++){
@@ -60,9 +88,17 @@ public class PokemonCardGame {
         System.out.println();
     }
 
+    /**
+     * prints the card stats of current player
+     * @param player player with current turn
+     */
     public void printCardStats(Player player){
     }
 
+    /**
+     * checks the prize pile of both players. if zero the game wins
+     * @return returns if there is a winner or not
+     */
     public boolean checkWinner(){
         if (playerOne.getPrizePile().size() == 0){
             System.out.println(playerTwo.getName() + " has won the game!!!");
@@ -75,6 +111,11 @@ public class PokemonCardGame {
         return false;
     }
 
+    /**
+     * sets the game up
+     * draws hands for both players
+     * draws prize piles for both players
+     */
     public void setupGame(){
         playerOne.drawHand();
         playerTwo.drawHand();
@@ -82,6 +123,12 @@ public class PokemonCardGame {
         playerTwo.drawPrizePile();
     }
 
+    /**
+     * runs the game
+     * while the players prize piles are greater than zero, loop both players turns
+     * each player turn consists the turn method from player class
+     * and checks the winning conditions to break loop and crown the winner
+     */
     public void runGame(){
         while (playerOne.getPrizePile().size() > 0 || playerTwo.getPrizePile().size() > 0){
             System.out.println("Player One's Turn");

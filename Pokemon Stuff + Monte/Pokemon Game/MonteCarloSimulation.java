@@ -1,10 +1,20 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This is a montecarlo simulation that uses pokemon cards as a theme
+ * We are figuring out the probability of a pokemon being drawn into hand 
+ * the hand of 7 is drawn from a deck of 60
+ * we will increment the amount of pokemon for each number of tests
+ */
 public  class MonteCarloSimulation{
 private ArrayList<Card> deck;  //this is the constructors job= new Card[];
 private ArrayList<Card> hand;
 
+/**
+ * This constructs the deck and hand
+ * we start the deck with one pokemon 
+ */
 public  MonteCarloSimulation(){
 this.deck = new ArrayList<Card>();
 this.hand = new ArrayList<Card>();
@@ -15,7 +25,12 @@ for(int i = 1; i < deckSize; i++){
     deck.add(new Energy());
 }
 }
-
+/**
+ * draws random card from deck 
+ * the drawn card is removed from the deck
+ * when drawn, the random card is returned
+ * @return returns a card that is drawn from the deck
+ */
  public Card drawCard() { //not draw card and put in hand
 
         Random rng = new Random();
@@ -25,7 +40,9 @@ for(int i = 1; i < deckSize; i++){
         deck.remove(cardIndex);
         return drawnCard;
     }
-
+    /**
+     * draws a hand of 7 using drawCard method
+     */
     public void drawHand(){
         for(int i = 0; i < 7; i++) { //counting to 7
             
@@ -33,7 +50,10 @@ for(int i = 1; i < deckSize; i++){
         }
     }
 
-//Draw hand and check if pokemon is in hand
+/**
+ * evaluates if a pokemon is in hand
+ * @return returns the boolean value if a pokemon is in the hand
+ */
 public boolean evaluateOpeningHand(){
     boolean havePokemon = false;
     for(int i = 0; i < hand.size(); i++){
@@ -45,11 +65,13 @@ public boolean evaluateOpeningHand(){
     return havePokemon;
 }
 
-//clears hand and clears deck for each function call
-    //creates new deck depending on how many pokemon you want in the deck
-    //adds input amount of pokemon in the deck
-    //subctracts the amount of pokemon cards from entire deck
-    //fills the rest of the deck with energy cards
+    /**
+     * clears hand and deck
+     * adds specificied amount of pokemon to deck
+     * subtracts amount of pokemon cards from entire deck
+     * fills rest with energy cards
+     * @param pokemonCount the desired amount of pokemon that will be in the deck 
+     */
     private void pokemonAmountAndReset(int pokemonCount) {
         deck.clear();
         hand.clear();
@@ -62,7 +84,16 @@ public boolean evaluateOpeningHand(){
         }
     }
 
-    //make engine for program
+    /**
+     * engine for the program/simulation
+     * constructs a deck for each pass of the loop
+     * initializes count to zero
+     * calls function to add amount of pokemon with i as parameter
+     * for each pass of the amount of pokemon loop, it runs 1000000 times
+     * clears and drawns new hand for each pass to account missing cards and odds
+     * increments one count for each time a pokemon is in hand
+     * turns the count to percent.
+     */
     public void runMonte() {
         //contructs every amount of pokemon possible in deck
         //initializes true count to zero

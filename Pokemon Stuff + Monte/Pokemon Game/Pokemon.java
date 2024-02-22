@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * pokemon is a card type that implements the attackable interface
+ * each pokemon has hp and an energypile
+ * every pokemon has two attacks
+ */
 public class Pokemon extends Card implements Attackable{
     
     private int hp;

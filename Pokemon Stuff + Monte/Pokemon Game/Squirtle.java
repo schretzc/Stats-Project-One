@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+/**
+ * pokemon card
+ * attacks are tackle and rain splash
+ */
 public class Squirtle extends Pokemon {
     
     private String attackOne;
@@ -44,7 +48,7 @@ public class Squirtle extends Pokemon {
      public String getName(){
         return "Squirtle";
      }
-
+     
      public void setEnergyPile(Energy energyCard) {
       energyPile.add(energyCard);
   }

@@ -1,5 +1,10 @@
 
 import java.util.ArrayList;
+/**
+ * Bulbasaur is a pokemon
+ * extends pokemon
+ * attacks are leechseed and vine whip
+ */
 public class Bulbasaur extends Pokemon{
     private String attackOne;
     private String attackTwo;
