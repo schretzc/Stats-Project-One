@@ -15,6 +15,7 @@
  * only if hand has pokemon
  * live inside monte carlo
  *
+ * make trainer rare candy
  */
 public class MonteCarloToo {
 
