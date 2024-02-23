@@ -171,6 +171,14 @@ public class Library
                 return false;
             }
         }
+        /**
+         * Call combination or permutation methods
+         */
+        public void binomialDistribution(){
+
+        }
+
+        
 
 
 
