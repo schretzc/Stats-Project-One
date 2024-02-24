@@ -144,13 +144,15 @@ public class Library
      */
     public double findStandardDeviation(double[] userInput, String type){
         if (type == "population"){
-            
+            //square rooths the variance of the population
             return Math.sqrt(findVariance(userInput, type));
         }
         else if (type == "sample"){
+            //square rooths the variance of the sample
             return Math.sqrt(findVariance(userInput, type));
         }
         else{
+            //error case
             System.out.println("Invalid type");
             return 0;
         }
@@ -339,8 +341,6 @@ public class Library
         System.out.println("The binomial distribution is " + binomialDistribution(0.8, 0.2, 10, 7));
 
         System.out.println("The expected value is " + expectedValues(3, 0.5));
-
-
     }
     
 
