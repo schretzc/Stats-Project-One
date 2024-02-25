@@ -10,6 +10,7 @@ import java.util.Random;
 public  class MonteCarloSimulation{
 private ArrayList<Card> deck;  //this is the constructors job= new Card[];
 private ArrayList<Card> hand;
+private ArrayList<Card> prizePile;
 
 /**
  * This constructs the deck and hand
@@ -18,6 +19,7 @@ private ArrayList<Card> hand;
 public  MonteCarloSimulation(){
 this.deck = new ArrayList<Card>();
 this.hand = new ArrayList<Card>();
+this.prizePile = new ArrayList<Card>();
 
 deck.add(new Pokemon());
 int deckSize = 60;
@@ -85,6 +87,58 @@ public boolean evaluateOpeningHand(){
     }
 
     /**
+     * adds specificied amount of rare candy to deck
+     * clears deck and hand
+     * adds 15 pokemon and energy to deck
+     * fills rest with trainer cards
+     * @param rareCandyCount amount of rare candy to add to deck
+     */
+    private void rareCandyAmountAndReset(int rareCandyCount){
+        deck.clear();
+        hand.clear();
+        for(int i = 0; i<rareCandyCount ; i++){
+            deck.add(new RareCandy());
+        }
+        for(int i = 0; i < 15; i++){
+            deck.add(new Pokemon());
+        }
+        for(int i = 0; i < 15; i++){
+            deck.add(new Energy());
+        }
+        int cardCount = 60 - rareCandyCount - 15 - 15;
+        for(int i = 0; i < cardCount; i++){
+            deck.add(new Trainer());
+        }
+    }
+
+    /**
+     * Draws the prize pile for the player
+     * Uses loop to draw the 6 cards
+     */
+    public void drawPrizePile(){
+        Random rng = new Random();
+        //System.out.println(deck.size());
+        for(int i = 0; i < 6; i++) { //counting to 7       
+            int cardIndex = rng.nextInt(deck.size()); //find random card
+            Card drawnCard = deck.get(cardIndex); 
+            deck.remove(cardIndex);
+            prizePile.add(drawnCard);
+        }
+    }
+
+    public boolean evaluatePrizePile(){
+        boolean haveCandy = false;
+        for(int i = 0; i < prizePile.size(); i++){
+            Card currentCard = prizePile.get(i);
+            if (currentCard instanceof RareCandy){
+                haveCandy = true;
+            }
+        }
+        return haveCandy;
+        
+    }
+
+    /**
      * engine for the program/simulation
      * constructs a deck for each pass of the loop
      * initializes count to zero
@@ -119,6 +173,59 @@ public boolean evaluateOpeningHand(){
         int num = i+1;
         System.out.println("Number of Pokemon in deck " + num +  " Percentage of True: " + tCount / 10000.000 + "%");
     }
+    }
+
+    public void runMonteToo(){
+        /**
+         * Use Existing Pokemon Deck
+         * Rare Candy Card skips middle evolution to go to final evolution
+         * Monte Carlo chance of failure
+         * Charziard deck needs to find rare candy to have a winning chance
+         * what if rare candy wasnt in deck? it was in prize pile
+         * Write monte Carlo simulation adding 1+2+3+4 rare candy trainer cards into deck
+         * Implementing not required
+         * find the odds given that a pokemon was in the opening hand, 
+         * what are the odds that your deck is "bricked" (no win condition left)
+         * what is the probability that your rare candy is in prize pile
+         * 15 pokemon , 15 energy, rest trainer (4 rare candy)
+         * find odds if a pokemon is in hand what are the odds that deck is bricked
+         * once program runs and works, solve it using math and conditional probability
+         * only if hand has pokemon
+         * live inside monte carlo
+         *
+         * make trainer rare candy
+         */
+        for (int i = 0; i < 4; i++){
+            //iniying count to zero for 
+            double pCount = 0;
+            double tCount  = 0;
+            rareCandyAmountAndReset(i+1);
+            drawPrizePile();
+            for (int j = 0; j < 1000000; j++){
+                hand.clear();
+                prizePile.clear();
+                drawPrizePile();
+                drawHand();
+                if (evaluateOpeningHand() == true){
+                    pCount++;
+                    if (evaluatePrizePile() == true){
+                        tCount++;
+                    }
+                }
+                rareCandyAmountAndReset(i+1);
+            }
+            System.out.println("The probability of getting a pokemon in hand is: " + pCount / 10000.000 + "%");
+            System.out.println("The probability of getting a rare candy in prize pile is: " + tCount / 10000.000 + "%");
+
+            //tCount is p(A and B) and pCount is p(A). tCount is 
+            //p(b) = p(A and B) / p(A)
+            System.out.println("The conditional probability might be: " + (tCount % pCount) / 10000 + "%"); 
+        }
+
+
+
+
+
     }
 
 
