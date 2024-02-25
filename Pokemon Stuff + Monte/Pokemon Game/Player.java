@@ -141,7 +141,7 @@ public class Player {
      */
     public void printBench(){
         for(int i = 0; i < benchPile.size(); i++){
-            System.out.println(i+1 + ": " + benchPile.get(i).getName() + " ");
+            System.out.println(i+1 + ": " + benchPile.get(i).getName());
         }
     }
 
@@ -149,13 +149,13 @@ public class Player {
      * Prints entire field
      * this includes hand, bench, and active pile
      */
-    public void printField(){
-        System.out.println("Hand: ");
-        printHand();
-        System.out.println("Bench: ");
-        printBench();
-        System.out.println("Active: ");
-        System.out.println(activePile.get(0).getName());}
+   // public void printField(){
+     //   System.out.println("Hand: ");
+     //   printHand();
+     //   System.out.println("Bench: ");
+     //   printBench();
+     //   System.out.println("Active: ");
+     //   System.out.println(activePile.get(0).getName());}
 
 
     /**
