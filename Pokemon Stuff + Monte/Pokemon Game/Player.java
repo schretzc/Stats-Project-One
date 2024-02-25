@@ -447,6 +447,8 @@ public class Player {
                 benchToActive(benchPokemon);}
             }else if (actionChoice == 3) {
                 attackPhase(player, targetPlayer);
+                System.out.println("Turn ended.");
+                continueTurn = false;
             } else if (actionChoice == 4) {
                 System.out.println("Turn ended.");
                 System.out.println();
