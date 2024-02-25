@@ -369,6 +369,7 @@ public class Player {
          System.out.println("Pick a card to play: ");
          int cardNum = scan.nextInt() - 1;
          playCard(cardNum, player);
+         player.printHand();
 
     }
 
