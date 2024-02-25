@@ -70,6 +70,7 @@ public class Player {
         Random rand = new Random();
         trainerDex.add(new ProfessorsResearch());
         trainerDex.add(new NestBall());
+        trainerDex.add(new GreensExploration());
         return trainerDex.get(rand.nextInt(trainerDex.size()));
     }
 
@@ -245,7 +246,7 @@ public class Player {
         else if (hand.get(cardNumber) instanceof Trainer){
             //play trainer card
             playTrainer(cardNumber, player);
-            System.out.println("Played trainer card");
+            //System.out.println("Played trainer card");
             System.out.println();
         }
     }
@@ -310,7 +311,7 @@ public class Player {
     
         // Retrieve the active Pokemon
         Pokemon activePokemon = (Pokemon) activePile.get(0);
-        //prizePile = targetPlayer.getPrizePile();
+        
 
         ArrayList<Card> opponentActivePile = targetPlayer.getActivePile();
         //ArrayList<Card> opponentBenchPile = targetPlayer.getBenchPile();
@@ -331,9 +332,11 @@ public class Player {
         switch (attackNumber) {
             case 1:
                 activePokemon.attackOne(opponentPokemon, currentPokemon.getEnergyPile());
+                System.out.println("opponent hp: " + opponentPokemon.getHp() + " current hp: " + currentPokemon.getHp());
                 break;
             case 2:
                 activePokemon.attackTwo(opponentPokemon, currentPokemon.getEnergyPile());
+                System.out.println("opponent hp: " + opponentPokemon.getHp() + " current hp: " + currentPokemon.getHp());
                 break;
             default:
                 System.out.println("Invalid attack number. Please choose 1 or 2.");
