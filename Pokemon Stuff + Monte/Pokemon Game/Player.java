@@ -306,6 +306,7 @@ public class Player {
         //if active pile is empty error case
         if (activePile.isEmpty() || !(activePile.get(0) instanceof Pokemon)) {
             System.out.println("No active Pokemon to attack with.");
+            System.out.println("Your turn is over fam.");
             return;
         }
     
