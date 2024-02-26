@@ -6,7 +6,7 @@ public class TestPokemonCardGame {
 
         MonteCarloSimulation m = new MonteCarloSimulation();
         // m.runMonte();
-       // m.runMonteToo();
+        //m.runMonteToo();
 
 
 
