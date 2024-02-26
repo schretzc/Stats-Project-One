@@ -59,6 +59,7 @@ public class Player {
         pokeDex.add(new Pikachu());
         pokeDex.add(new Bulbasaur());
         pokeDex.add(new Squirtle());
+        pokeDex.add(new Mewtwo());
         return pokeDex.get(rand.nextInt(pokeDex.size()));
     }
 
