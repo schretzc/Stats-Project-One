@@ -407,8 +407,15 @@ public class Player {
                 activePile.add(benchPile.get(cardNumber));
                 benchPile.remove(cardNumber);
             }
-            else {
-                System.out.println("Active is full");
+            else{
+                //swaps active and bench pokemon
+                Card temp = activePile.get(0);
+                activePile.remove(0);
+                activePile.add(benchPile.get(cardNumber));
+                benchPile.remove(cardNumber);
+                benchPile.add(temp);
+                System.out.println("You swapped active pokemon with bench pokemon");
+                System.out.println();
             }
         }
 
