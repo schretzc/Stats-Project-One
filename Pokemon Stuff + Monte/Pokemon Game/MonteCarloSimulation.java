@@ -219,7 +219,7 @@ public boolean evaluateOpeningHand(){
 
             //tCount is p(A and B) and pCount is p(A). tCount is 
             //p(b) = p(A and B) / p(A)
-            System.out.println("The conditional probability might be: " + (tCount % pCount) / 10000 + "%"); 
+            System.out.println("The conditional probability is: " + (tCount % pCount) / 10000 + "%"); 
         }
 
 
