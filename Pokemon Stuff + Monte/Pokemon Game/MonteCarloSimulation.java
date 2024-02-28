@@ -218,7 +218,7 @@ public boolean evaluateOpeningHand(){
             System.out.println("The probability of getting a rare candy in prize pile is: " + tCount / 10000.000 + "%");
 
             //tCount is p(A and B) and pCount is p(A). tCount is 
-            //p(b) = p(A and B) / p(A)
+            //p(b) = p(A and B) / p(b)
             System.out.println("The conditional probability is: " + (tCount % pCount) / 10000 + "%"); 
         }
 
