@@ -276,7 +276,7 @@ public class Library
          * @param probability is the probability of the random variable
          * @return returns answer as a double that is the expected value
          */
-        public double expectedValues(int discreteRandomVariable, double probability){
+        public double expectedValuesBD(int discreteRandomVariable, double probability){
             double expectedValue = discreteRandomVariable * probability;
             return expectedValue;
         }
@@ -287,9 +287,33 @@ public class Library
          * @param mean
          * @return
          */
-        public double variance(double expectedValues, double mean){
+        public double varianceBD(double expectedValues, double mean){
             double variance = Math.pow(expectedValues - mean, 2);
             return variance;
+        }
+
+        public void geometricDistribution(){
+            
+        }
+
+        public void varianceGD(){
+
+        }
+        
+        public void expectedValueGB(){
+
+        }
+
+        public void hypergeometricDistribution(){
+
+        }
+
+        public void varianceHGD(){
+
+        }
+
+        public void expectedValueHGD(){
+
         }
 
 
@@ -340,7 +364,8 @@ public class Library
 
         System.out.println("The binomial distribution is " + binomialDistribution(0.8, 0.2, 10, 7));
 
-        System.out.println("The expected value is " + expectedValues(3, 0.5));
+        System.out.println("The expected value of Binomial Distribution is " + expectedValuesBD(3, 0.5));
+        System.out.println();
     }
     
 
