@@ -124,6 +124,10 @@ public class PokemonCardGame {
         }
     }
 
+    /**
+     * picks heads or tails with player one input
+     * @return returns if player one goes first or not
+     */
     public boolean pickCoin(){
         System.out.println("Player One, pick heads or tails: ");
         String choice = scan.nextLine();
