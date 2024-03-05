@@ -362,20 +362,17 @@ public class Library
         System.out.println("the BigInt factorial is: " + factorialBigInt(9));
 
         System.out.println("The number of permutations is " + findPermutations(10,3));
-        
         System.out.println("The number of combinations is " + findCombinations(10, 3));
 
         System.out.println("Is the problem independent? " + isIndependent(0.5, 0.5, 0.5, 0.5, 0.25));
         System.out.println("Is the problem dependent? " + isDependent(0.5, 0.5, 0.5, 0.5, 0.25));
+        System.out.println();
 
         System.out.println("The binomial distribution is " + binomialDistribution(0.8, 0.2, 10, 7));
-
         System.out.println("The expected value of Binomial Distribution is " + expectedValuesBD(3, 0.5));
-        System.out.println();
-
         System.out.println("The variance of Binomial Distribution is " + varianceBD(1.5, 2.5));
         System.out.println();
-        
+
         System.out.println("The geometric distribution is " + geometricDistribution(0.8, 0.2, 5));
         System.out.println("The expected value of Geometric Distribution is " + expectedValueGD(0.2));
         System.out.println("The variance of Geometric Distribution is " + varianceGD(0.2));
