@@ -292,28 +292,34 @@ public class Library
             return variance;
         }
 
-        public void geometricDistribution(){
-            
+        public double geometricDistribution(double q, double p, int y){
+            double gD = Math.pow(q, y - 1) * p;
+            return gD;
         }
 
-        public void varianceGD(){
-
-        }
-        
-        public void expectedValueGB(){
-
+        public double expectedValueGD(double p){
+            double expectedValue = 1 / p;
+            return expectedValue;
         }
 
-        public void hypergeometricDistribution(){
-
+        public double varianceGD(double p){
+            double variance = (1 - p) / Math.pow(p, 2);
+            return variance;
         }
 
-        public void varianceHGD(){
-
+        public double hypergeometricDistribution(int N, int n, int r, int y){
+            double hGD = (findCombinations(r, y).doubleValue() * findCombinations(N - r, n - y).doubleValue() / findCombinations(N, n).doubleValue());
+            return hGD;
         }
 
-        public void expectedValueHGD(){
+        public double expectedValueHGD(double n, double N, double r){
+            double expectedValue = (n * r) / N;
+            return expectedValue;
+        }
 
+        public double varianceHGD(double n, double N, double r){
+            double variance = (n * (r/N) * ((N-r)/(N)) * ((N-n)/(N-1)));
+            return variance;
         }
 
 
@@ -366,6 +372,18 @@ public class Library
 
         System.out.println("The expected value of Binomial Distribution is " + expectedValuesBD(3, 0.5));
         System.out.println();
+
+        System.out.println("The variance of Binomial Distribution is " + varianceBD(1.5, 2.5));
+        System.out.println();
+        
+        System.out.println("The geometric distribution is " + geometricDistribution(0.8, 0.2, 5));
+        System.out.println("The expected value of Geometric Distribution is " + expectedValueGD(0.2));
+        System.out.println("The variance of Geometric Distribution is " + varianceGD(0.2));
+        System.out.println();
+
+        System.out.println("The hypergeometric distribution is " + hypergeometricDistribution(196, 10, 101, 7));
+        System.out.println("The expected value of Hypergeometric Distribution is " + expectedValueHGD(10, 196, 101));
+        System.out.println("The variance of Hypergeometric Distribution is " + varianceHGD(10, 196, 101));
     }
     
 
