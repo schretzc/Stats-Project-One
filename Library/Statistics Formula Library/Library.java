@@ -188,8 +188,8 @@ public class Library
 
       /**
        * calculates number of permutations and returns answer as a biginteger
-       * @param n input
-       * @param r inpit
+       * @param n number of items
+       * @param r items being picked
        * @return returns permutations as big integer
        */
       public BigInteger findPermutations(int n, int r){
@@ -199,8 +199,8 @@ public class Library
 
       /**
        * calculates number of combinations and returns answer as big integer
-       * @param n
-       * @param r
+       * @param n total number of items
+       * @param r number being chosen
        * @return returns number of combinations as big integer
        */
       public BigInteger findCombinations(int n, int r){
@@ -294,8 +294,8 @@ public class Library
 
         /**
          * finds variance of binomial distribution
-         * @param expectedValues
-         * @param mean
+         * @param expectedValues values expected
+         * @param mean mean
          * @return returns the variance as a double
          */
         public double varianceBD(double expectedValues, double mean){
@@ -327,7 +327,7 @@ public class Library
 
         /**
          * finds variance of the geometric distribution
-         * @param p
+         * @param p 
          * @return returns variance as a double
          */
         public double varianceGD(double p){
@@ -337,10 +337,10 @@ public class Library
 
         /**
          * 
-         * @param N
-         * @param n
-         * @param r
-         * @param y
+         * @param N Total number of object
+         * @param n number of sample
+         * @param r number of wanted in total
+         * @param y number of successes needed
          * @return returns hypgeometric distribution as a double
          */
         public double hypergeometricDistribution(int N, int n, int r, int y){
@@ -350,9 +350,9 @@ public class Library
 
         /**
          * finds the expected value of the hypogeometric distribution
-         * @param n
-         * @param N
-         * @param r
+         * @param n number of sample
+         * @param N total number of object
+         * @param r number wanted in total
          * @return returns expected value as a double
          */
         public double expectedValueHGD(double n, double N, double r){
@@ -362,9 +362,9 @@ public class Library
 
         /**
          * Finds the variance of the hypogeometric distribution
-         * @param n
-         * @param N
-         * @param r
+         * @param n number of sample
+         * @param N total number of objects
+         * @param r number wanted in total
          * @return returns variance as a double
          */
         public double varianceHGD(double n, double N, double r){
