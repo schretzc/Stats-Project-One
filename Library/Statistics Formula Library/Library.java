@@ -255,6 +255,11 @@ public class Library
                 return false;
             }
         }
+
+        public double conditionalProbability(double pAAndB, double pB){
+            double cProb = (pAAndB) / (pB);
+            return cProb;
+        }
         
         /**
          * finds binomial distribution of input and returns as a double
@@ -367,6 +372,8 @@ public class Library
         System.out.println("Is the problem independent? " + isIndependent(0.5, 0.5, 0.5, 0.5, 0.25));
         System.out.println("Is the problem dependent? " + isDependent(0.5, 0.5, 0.5, 0.5, 0.25));
         System.out.println();
+
+        System.out.println("The conditional probability is " + conditionalProbability(2, 4));
 
         System.out.println("The binomial distribution is " + binomialDistribution(0.8, 0.2, 10, 7));
         System.out.println("The expected value of Binomial Distribution is " + expectedValuesBD(3, 0.5));
