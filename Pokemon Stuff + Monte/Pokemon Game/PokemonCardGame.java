@@ -158,7 +158,6 @@ public class PokemonCardGame {
      * draws prize piles for both players
      */
     public void setupGame(){
-
         playerOne.drawHand();
         playerTwo.drawHand();
         playerOne.drawPrizePile();
