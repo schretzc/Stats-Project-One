@@ -256,6 +256,12 @@ public class Library
             }
         }
 
+        /**
+         * finds the conditinoal property with given parameyers
+         * @param pAAndB probability of a and b
+         * @param pB probability of b
+         * @return
+         */
         public double conditionalProbability(double pAAndB, double pB){
             double cProb = (pAAndB) / (pB);
             return cProb;
@@ -275,8 +281,8 @@ public class Library
         }
 
         /**
-         * Question! should i input arrays instead of single values?
-         * finds expected value of input and returns as a double
+         * 
+         * finds expected value of binomial decimal and returns as a double
          * @param discreteRandomVariable is the random variable
          * @param probability is the probability of the random variable
          * @return returns answer as a double that is the expected value
@@ -287,44 +293,83 @@ public class Library
         }
 
         /**
-         * 
+         * finds variance of binomial distribution
          * @param expectedValues
          * @param mean
-         * @return
+         * @return returns the variance as a double
          */
         public double varianceBD(double expectedValues, double mean){
             double variance = Math.pow(expectedValues - mean, 2);
             return variance;
         }
 
+        /**
+         * finds geometric distribution of given inputs
+         * @param q
+         * @param p
+         * @param y
+         * @return returns the geometric distribution as a double
+         */
         public double geometricDistribution(double q, double p, int y){
             double gD = Math.pow(q, y - 1) * p;
             return gD;
         }
 
+        /**
+         * finds expected value of geometric distribution
+         * @param p
+         * @return returns expected value as a double
+         */
         public double expectedValueGD(double p){
             double expectedValue = 1 / p;
             return expectedValue;
         }
 
+        /**
+         * finds variance of the geometric distribution
+         * @param p
+         * @return returns variance as a double
+         */
         public double varianceGD(double p){
             double variance = (1 - p) / Math.pow(p, 2);
             return variance;
         }
 
+        /**
+         * 
+         * @param N
+         * @param n
+         * @param r
+         * @param y
+         * @return returns hypgeometric distribution as a double
+         */
         public double hypergeometricDistribution(int N, int n, int r, int y){
             double hGD = (findCombinations(r, y).doubleValue() * findCombinations(N - r, n - y).doubleValue() / findCombinations(N, n).doubleValue());
             return hGD;
         }
 
+        /**
+         * finds the expected value of the hypogeometric distribution
+         * @param n
+         * @param N
+         * @param r
+         * @return returns expected value as a double
+         */
         public double expectedValueHGD(double n, double N, double r){
             double expectedValue = (n * r) / N;
             return expectedValue;
         }
 
+        /**
+         * Finds the variance of the hypogeometric distribution
+         * @param n
+         * @param N
+         * @param r
+         * @return returns variance as a double
+         */
         public double varianceHGD(double n, double N, double r){
             double variance = (n * (r/N) * ((N-r)/(N)) * ((N-n)/(N-1)));
-            return variance;
+            return variance;       
         }
 
 
@@ -334,7 +379,9 @@ public class Library
 
 
 
-
+    /**
+     * test method for all of the methods in the class
+     */
     public void runTest(){
         
         double[] sampleNumbersOdd = {1,2,3,4,5,6,7,8,9};
