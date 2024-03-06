@@ -372,6 +372,21 @@ public class Library
             return variance;       
         }
 
+        public double negativeBinomialDistribution(double p, double q, int r, int y){
+            double nBD = (findCombinations(y-1, r -1).doubleValue()) * (Math.pow(p, r)) * (Math.pow(q, y-r));
+            return nBD;
+        }
+
+        public double expectedValueNBD(double r, double p){
+            double expectedValue = r / p;
+            return expectedValue;
+        }
+
+        public double varianceNBD(double r, double p){
+            double variance = ((r)*(1-p) / (Math.pow(p, 2)));
+            return variance;
+        }
+
 
 
         
@@ -404,11 +419,11 @@ public class Library
 
         
         double standardDeviationPop = findStandardDeviation(sampleNumbersEven, "population");
-        System.out.println("The Standard Deviation of the Population is " + standardDeviationPop);
+        System.out.println("The standard deviation of the Population is " + standardDeviationPop);
 
         //double standardDeviationSamp = findStandardDeviationSample(sampleNumbersEven);
         double standardDeviationSamp = findStandardDeviation(sampleNumbersEven, "sample");
-        System.out.println("The Standard Deviation of the Sample is " + standardDeviationSamp);
+        System.out.println("The standard deviation of the Sample is " + standardDeviationSamp);
 
         System.out.println("the Long factorial is: " + factorialLong(9));
         System.out.println("the BigInt factorial is: " + factorialBigInt(9));
@@ -423,18 +438,23 @@ public class Library
         System.out.println("The conditional probability is " + conditionalProbability(2, 4));
 
         System.out.println("The binomial distribution is " + binomialDistribution(0.8, 0.2, 10, 7));
-        System.out.println("The expected value of Binomial Distribution is " + expectedValuesBD(3, 0.5));
-        System.out.println("The variance of Binomial Distribution is " + varianceBD(1.5, 2.5));
+        System.out.println("The expected value of binomial distribution is " + expectedValuesBD(3, 0.5));
+        System.out.println("The variance of binomial distribution is " + varianceBD(1.5, 2.5));
         System.out.println();
 
         System.out.println("The geometric distribution is " + geometricDistribution(0.8, 0.2, 5));
-        System.out.println("The expected value of Geometric Distribution is " + expectedValueGD(0.2));
-        System.out.println("The variance of Geometric Distribution is " + varianceGD(0.2));
+        System.out.println("The expected value of geometric distribution is " + expectedValueGD(0.2));
+        System.out.println("The variance of geometric distribution is " + varianceGD(0.2));
         System.out.println();
 
         System.out.println("The hypergeometric distribution is " + hypergeometricDistribution(196, 10, 101, 7));
-        System.out.println("The expected value of Hypergeometric Distribution is " + expectedValueHGD(10, 196, 101));
-        System.out.println("The variance of Hypergeometric Distribution is " + varianceHGD(10, 196, 101));
+        System.out.println("The expected value of hypergeometric distribution is " + expectedValueHGD(10, 196, 101));
+        System.out.println("The variance of hypergeometric distribution is " + varianceHGD(10, 196, 101));
+        System.out.println();
+
+        System.out.println("The negative binomial distribution is " + negativeBinomialDistribution(.4,.6, 3, 10));
+        System.out.println("The expected value of the negative binomial distribution is " + expectedValueNBD(3, .2));
+        System.out.println("The variance of the negative binomial distribution is " + varianceNBD(3, .2));
     }
     
 
