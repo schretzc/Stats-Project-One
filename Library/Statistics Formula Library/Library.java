@@ -275,7 +275,7 @@ public class Library
          * @param y is the number of successes needed
          * @return returns answer as a double
          */
-        public double binomialDistribution(double p, double q, int n, int y){
+        public double binomialProbabilityDistribution(double p, double q, int n, int y){
             double binomial = findCombinations(n, y).doubleValue() * Math.pow(p, y) * Math.pow(q, n - y);
             return binomial;
         }
@@ -287,7 +287,7 @@ public class Library
          * @param probability is the probability of the random variable
          * @return returns answer as a double that is the expected value
          */
-        public double expectedValuesBD(int discreteRandomVariable, double probability){
+        public double expectedValuesBPD(int discreteRandomVariable, double probability){
             double expectedValue = discreteRandomVariable * probability;
             return expectedValue;
         }
@@ -298,7 +298,7 @@ public class Library
          * @param mean mean
          * @return returns the variance as a double
          */
-        public double varianceBD(double expectedValues, double mean){
+        public double varianceBPD(double expectedValues, double mean){
             double variance = Math.pow(expectedValues - mean, 2);
             return variance;
         }
@@ -310,7 +310,7 @@ public class Library
          * @param y
          * @return returns the geometric distribution as a double
          */
-        public double geometricDistribution(double q, double p, int y){
+        public double geometricProbabilityDistribution(double q, double p, int y){
             double gD = Math.pow(q, y - 1) * p;
             return gD;
         }
@@ -320,7 +320,7 @@ public class Library
          * @param p
          * @return returns expected value as a double
          */
-        public double expectedValueGD(double p){
+        public double expectedValueGPD(double p){
             double expectedValue = 1 / p;
             return expectedValue;
         }
@@ -330,7 +330,7 @@ public class Library
          * @param p 
          * @return returns variance as a double
          */
-        public double varianceGD(double p){
+        public double varianceGPD(double p){
             double variance = (1 - p) / Math.pow(p, 2);
             return variance;
         }
@@ -343,7 +343,7 @@ public class Library
          * @param y number of successes needed
          * @return returns hypgeometric distribution as a double
          */
-        public double hypergeometricDistribution(int N, int n, int r, int y){
+        public double hypergeometricProbabilityDistribution(int N, int n, int r, int y){
             double hGD = (findCombinations(r, y).doubleValue() * findCombinations(N - r, n - y).doubleValue() / findCombinations(N, n).doubleValue());
             return hGD;
         }
@@ -355,7 +355,7 @@ public class Library
          * @param r number wanted in total
          * @return returns expected value as a double
          */
-        public double expectedValueHGD(double n, double N, double r){
+        public double expectedValueHPD(double n, double N, double r){
             double expectedValue = (n * r) / N;
             return expectedValue;
         }
@@ -367,22 +367,42 @@ public class Library
          * @param r number wanted in total
          * @return returns variance as a double
          */
-        public double varianceHGD(double n, double N, double r){
+        public double varianceHPD(double n, double N, double r){
             double variance = (n * (r/N) * ((N-r)/(N)) * ((N-n)/(N-1)));
             return variance;       
         }
 
-        public double negativeBinomialDistribution(double p, double q, int r, int y){
+        /**
+         * Finds the negative binomial probability distribution 
+         * @param p Probability
+         * @param q Probability of failure
+         * @param r Amount Wanted
+         * @param y Total Number
+         * @return returns NBPD
+         */
+        public double negativeBinomialProbabilityDistribution(double p, double q, int r, int y){
             double nBD = (findCombinations(y-1, r -1).doubleValue()) * (Math.pow(p, r)) * (Math.pow(q, y-r));
             return nBD;
         }
 
-        public double expectedValueNBD(double r, double p){
+        /**
+         * Finds expected value of NBPD
+         * @param r Amount wanted
+         * @param p probability
+         * @return returns expected value of NBPD
+         */
+        public double expectedValueNBPD(double r, double p){
             double expectedValue = r / p;
             return expectedValue;
         }
 
-        public double varianceNBD(double r, double p){
+        /**
+         * finds variance of NBPD
+         * @param r Amount wanted
+         * @param p probability
+         * @return
+         */
+        public double varianceNBPD(double r, double p){
             double variance = ((r)*(1-p) / (Math.pow(p, 2)));
             return variance;
         }
@@ -437,24 +457,24 @@ public class Library
 
         System.out.println("The conditional probability is " + conditionalProbability(2, 4));
 
-        System.out.println("The binomial distribution is " + binomialDistribution(0.8, 0.2, 10, 7));
-        System.out.println("The expected value of binomial distribution is " + expectedValuesBD(3, 0.5));
-        System.out.println("The variance of binomial distribution is " + varianceBD(1.5, 2.5));
+        System.out.println("The binomial probability distribution is " + binomialProbabilityDistribution(0.8, 0.2, 10, 7));
+        System.out.println("The expected value of binomial probability distribution is " + expectedValuesBPD(3, 0.5));
+        System.out.println("The variance of binomial probability distribution is " + varianceBPD(1.5, 2.5));
         System.out.println();
 
-        System.out.println("The geometric distribution is " + geometricDistribution(0.8, 0.2, 5));
-        System.out.println("The expected value of geometric distribution is " + expectedValueGD(0.2));
-        System.out.println("The variance of geometric distribution is " + varianceGD(0.2));
+        System.out.println("The geometric probability distribution is " + geometricProbabilityDistribution(0.8, 0.2, 5));
+        System.out.println("The expected value of geometric probability distribution is " + expectedValueGPD(0.2));
+        System.out.println("The variance of geometric probability distribution is " + varianceGPD(0.2));
         System.out.println();
 
-        System.out.println("The hypergeometric distribution is " + hypergeometricDistribution(196, 10, 101, 7));
-        System.out.println("The expected value of hypergeometric distribution is " + expectedValueHGD(10, 196, 101));
-        System.out.println("The variance of hypergeometric distribution is " + varianceHGD(10, 196, 101));
+        System.out.println("The hypergeometric probability distribution is " + hypergeometricProbabilityDistribution(196, 10, 101, 7));
+        System.out.println("The expected value of hypergeometric probability distribution is " + expectedValueHPD(10, 196, 101));
+        System.out.println("The variance of hypergeometric probability distribution is " + varianceHPD(10, 196, 101));
         System.out.println();
 
-        System.out.println("The negative binomial distribution is " + negativeBinomialDistribution(.4,.6, 3, 10));
-        System.out.println("The expected value of the negative binomial distribution is " + expectedValueNBD(3, .2));
-        System.out.println("The variance of the negative binomial distribution is " + varianceNBD(3, .2));
+        System.out.println("The negative binomial probability distribution is " + negativeBinomialProbabilityDistribution(.4,.6, 3, 10));
+        System.out.println("The expected value of the negative binomial probability distribution is " + expectedValueNBPD(3, .2));
+        System.out.println("The variance of the negative binomial probability distribution is " + varianceNBPD(3, .2));
     }
     
 
