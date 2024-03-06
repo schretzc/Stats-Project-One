@@ -100,11 +100,11 @@ public class PokemonCardGame {
      */
     public boolean checkWinner(){
         if (playerOne.getPrizePile().size() == 0){
-            System.out.println(playerTwo.getName() + " has won the game!!!");
+            System.out.println(playerOne.getName() + " has won the game!!!");
             return true;
         }
         if(playerTwo.getPrizePile().size() == 0){
-            System.out.println(playerOne.getName() + " has won the game!!!");
+            System.out.println(playerTwo.getName() + " has won the game!!!");
             return true;
         }
         return false;
