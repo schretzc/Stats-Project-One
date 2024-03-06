@@ -16,7 +16,12 @@ public class SetOperations <T>{
     public SetOperations(){
        
     }
-    //method that returns the union of two sets as arraylist of type T
+    /**
+     * Finds the union of the two sets
+     * @param set main set input
+     * @param subset subset input
+     * @return returns the union of the two sets
+     */
     public ArrayList<T> union(ArrayList<T> set, ArrayList<T> subset){
         //new arraylist to store the union of both sets
         ArrayList<T> union = new ArrayList<>();
@@ -32,7 +37,12 @@ public class SetOperations <T>{
         return union;
     }
 
-    //method that returns interection of two sets as arraylist
+    /**
+     * finds the intersection of the two sets
+     * @param set main set input
+     * @param subset subset input
+     * @return returns the intersection of the two sets.
+     */
     public ArrayList<T> intersect(ArrayList<T>set, ArrayList<T>subset){
         //create new arraylist to store the intersection of both sets
         ArrayList<T> intersect = new ArrayList<>();
@@ -49,7 +59,12 @@ public class SetOperations <T>{
         return intersect;
     }
 
-    //method that returns complement of an arraylist
+    /**
+     * finds the complement of the two sets.
+     * @param set main set input
+     * @param subset subset input
+     * @return returns the complement of the two sets
+     */
     public ArrayList<T> complement(ArrayList<T>set, ArrayList<T> subset){
         //create new arraylist to store the complement of both sets     
         ArrayList<T> complement = new ArrayList<>();
@@ -67,6 +82,9 @@ public class SetOperations <T>{
         return complement;
     }
 
+    /**
+     * Set operations and testing of each method.
+     */
     public void runSetOperations(){
         SetOperations<String> test = new SetOperations<>();
        
@@ -86,10 +104,14 @@ public class SetOperations <T>{
         subset.add("Thursday");
 
         System.out.println("Set: " + set);
+        System.out.println();
         System.out.println("Subset: " + subset);
+        System.out.println();
 
         System.out.println("Union: " + test.union(set, subset));
+        System.out.println();
         System.out.println("Intersect: " + test.intersect(set, subset));
+        System.out.println();
         System.out.println("Complement: " + test.complement(set, subset));
     }
 }
