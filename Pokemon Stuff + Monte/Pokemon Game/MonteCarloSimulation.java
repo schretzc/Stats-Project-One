@@ -126,16 +126,15 @@ public boolean evaluateOpeningHand(){
         }
     }
 
-    public boolean evaluatePrizePile(){
-        boolean haveCandy = false;
+    public double evaluatePrizePile(){
+        double candyCount = 0;
         for(int i = 0; i < prizePile.size(); i++){
             Card currentCard = prizePile.get(i);
             if (currentCard instanceof RareCandy){
-                haveCandy = true;
+                candyCount++;
             }
         }
-        return haveCandy;
-        
+        return candyCount;
     }
 
     /**
@@ -208,7 +207,7 @@ public boolean evaluateOpeningHand(){
                 drawHand();
                 if (evaluateOpeningHand() == true){
                     pCount++;
-                    if (evaluatePrizePile() == true){
+                    if (evaluatePrizePile() == i+1){
                         tCount++;
                     }
                 }
@@ -216,7 +215,8 @@ public boolean evaluateOpeningHand(){
             }
 
             System.out.println("The probability of getting a pokemon in hand is: " + pCount / 10000.000 + "%");
-            System.out.println("The probability of getting a rare candy in prize pile given there is a pokemon in hand is: " + tCount / 10000.000 + "%");
+            System.out.println("The probability of all rare candy cards in prize pile given there is a pokemon in hand is: " + tCount / 10000.000 + "%");
+            System.out.println();
 
 
             //tCount is p(A and B) and pCount is p(B).
