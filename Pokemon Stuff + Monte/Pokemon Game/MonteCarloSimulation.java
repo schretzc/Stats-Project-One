@@ -214,12 +214,13 @@ public boolean evaluateOpeningHand(){
                 }
                 rareCandyAmountAndReset(i+1);
             }
-            System.out.println("The probability of getting a pokemon in hand is: " + pCount / 10000.000 + "%");
-            System.out.println("The probability of getting a rare candy in prize pile is: " + tCount / 10000.000 + "%");
 
-            //tCount is p(A and B) and pCount is p(A). tCount is 
-            //p(b) = p(A and B) / p(b)
-            System.out.println("The conditional probability is: " + (tCount % pCount) / 10000 + "%"); 
+            System.out.println("The probability of getting a pokemon in hand is: " + pCount / 10000.000 + "%");
+            System.out.println("The probability of getting a rare candy in prize pile given there is a pokemon in hand is: " + tCount / 10000.000 + "%");
+
+
+            //tCount is p(A and B) and pCount is p(B).
+            //p(A|B) = p(A and B) / p(A)
         }
 
 
